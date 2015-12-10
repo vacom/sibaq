@@ -1,0 +1,455 @@
+
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Sibaq Rally</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Vitor Amaral, Flavio Amaral, Pedro Araujo, Romeu Pinho">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link href="http://www.prepbootstrap.com/Content/css/single-page-admin/main.css" rel="stylesheet">
+    <link href="http://www.prepbootstrap.com/Content/css/single-page-admin/font-style.css" rel="stylesheet">
+    <link href="http://www.prepbootstrap.com/Content/css/single-page-admin/flexslider.css" rel="stylesheet">
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/jquery-1.10.2.min.js"></script>
+        
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/bootstrap.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/lineandbars.js"></script>
+    
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/dash-charts.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/gauge.js"></script>
+	
+	<!-- NOTY JAVASCRIPT -->
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/jquery.noty.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/layouts/top.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/layouts/topLeft.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/layouts/topRight.js"></script>
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/layouts/topCenter.js"></script>
+	
+	<!-- You can add more layouts if you want -->
+	<script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/noty/themes/default.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://www.prepbootstrap.com/Content/js/single-page-admin/jquery.flexslider.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/single-page-admin/admin.js"></script>
+      
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+
+
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btn-blog-next").click(function () {
+            $('#blogCarousel').carousel('next')
+        });
+        $("#btn-blog-prev").click(function () {
+            $('#blogCarousel').carousel('prev')
+        });
+
+        $("#btn-client-next").click(function () {
+            $('#clientCarousel').carousel('next')
+        });
+        $("#btn-client-prev").click(function () {
+            $('#clientCarousel').carousel('prev')
+        });
+
+    });
+
+    $(window).load(function () {
+
+        $('.flexslider').flexslider({
+            animation: "slide",
+            slideshow: true,
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+
+</script>    
+  </head>
+  <body>
+  
+  	<!-- NAVIGATION MENU -->
+
+    <div class="navbar-nav navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"> Sibaq Rally</a>
+        </div> 
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html"><i class="icon-home icon-white"></i> Equipa</a></li>                            
+              <li><a href="tables.html"><i class="icon-th icon-white"></i> Classificações</a></li>
+              <li><a href="user.html"><i class="icon-user icon-white"></i> Utilizador</a></li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <div class="container">
+
+	  <!-- FIRST ROW OF BLOCKS -->     
+      <div class="row">
+
+      <!-- USER PROFILE BLOCK -->
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+	      		<dtitle>Concorrente</dtitle>
+	      		<hr>
+				<div class="thumbnail">
+					<img src="imgs/vacom80.jpg" alt="Vitor Amaral" class="img-circle">
+				</div><!-- /thumbnail -->
+				<h1>Vitor Amaral</h1>
+				<h3>Honda</h3>
+				<br>
+					<div class="info-user">
+						<span aria-hidden="true" class="li_user fs1"></span>
+						<span aria-hidden="true" class="li_settings fs1"></span>
+						<span aria-hidden="true" class="li_mail fs1"></span>
+						<span aria-hidden="true" class="li_key fs1"></span>
+					</div>
+				</div>
+        </div>
+
+      <!-- DONUT CHART BLOCK -->
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+		  		<dtitle>Classificação</dtitle>
+		  		<hr>
+	        	<div id="load"></div>
+	        	<h2>4º lugar</h2>
+			</div>
+        </div>
+
+      <!-- DONUT CHART BLOCK -->
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+		  		<dtitle>Classificação de Equipa</dtitle>
+		  		<hr>
+	        	<div id="space"></div>
+	        	<h2>1º lugar</h2>
+			</div>
+        </div>
+        
+        <div class="col-sm-3 col-lg-3">
+
+      <!-- LOCAL TIME BLOCK -->
+      		<div class="half-unit">
+	      		<dtitle>Tempo Local</dtitle>
+	      		<hr>
+		      		<div class="clockcenter">
+			      		<digiclock>12:45:25</digiclock>
+		      		</div>
+			</div>
+
+      <!-- SERVER UPTIME -->
+			<div class="half-unit">
+	      		<dtitle>Velocidade</dtitle>
+	      		<hr>
+	      		<div class="cont">
+					<p><img src="http://www.prepbootstrap.com/Content/images/shared/single-page-admin/up.png" alt=""> 200 km/h</p>
+				</div>
+			</div>
+
+        </div>
+      </div><!-- /row -->
+      
+      
+	  <!-- SECOND ROW OF BLOCKS -->     
+      <div class="row">
+        <div class="col-sm-3 col-lg-3">
+      
+      		<div class="dash-unit">
+      		<dtitle>Equipa</dtitle>
+      		<hr>
+      		<div class="framemail">
+    			<div class="window">
+			        <ul class="mail">
+			            <li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/flavio80.jpg" alt="avatar">
+			                <p class="sender">Flavio Amaral</p>
+			                <div class="actions">
+			                    <a href="views/flavio.html"><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						<li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/romeu80.jpg" alt="avatar">
+			                <p class="sender">Flavio Amaral</p>
+			                <div class="actions">
+			                    <a href="views/romeu.html"><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+			           
+			        </ul>
+    			</div>
+			</div>
+		</div><!-- /dash-unit -->
+		
+		
+    </div><!-- /span3 -->
+
+	  <!-- GRAPH CHART - lineandbars.js file -->     
+        <div class="col-sm-3 col-lg-3">
+			
+			
+			
+			
+      		<div class="dash-unit">
+      		<dtitle>Ritmo Cardiaco</dtitle>
+      		<hr>
+			    <div class="section-graph">
+			      <div id="importantchart"></div>
+			      <br>
+			      <div class="graph-info">
+			        <i class="graph-arrow"></i>
+			        <span class="graph-info-big">120</span>
+			      </div>
+			    </div>
+			</div>
+        </div>
+
+	  <!-- LAST MONTH REVENUE -->     
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+	      		<dtitle>Outras Informações</dtitle>
+	      		<hr>
+	      		<div class="cont">
+					<p><bold>12 ºC</bold> | <ok>Temperatura</ok></p>
+					<br>
+					<p><bold>150m</bold> | Altitude</p>
+					<br>
+					<p><bold>41°</bold> | <bad>Posição</bad></p>
+					<br>
+
+				</div>
+
+			</div>
+        </div>
+        
+	  <!-- 30 DAYS STATS - CAROUSEL FLEXSLIDER -->     
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+	      		<dtitle>Pressão Arterial</dtitle>
+	      		<hr>
+	      		<br>
+	      		<br>
+	            <div class="flexslider">
+					<ul class="slides">
+						<li><img src="http://www.prepbootstrap.com/Content/images/shared/single-page-admin/slide01.png" alt="slider"></li>
+						<li><img src="http://www.prepbootstrap.com/Content/images/shared/single-page-admin/slide02.png" alt="slider"></li>
+					</ul>
+            </div>
+				<div class="cont">
+					<p>StatCounter Information</p>
+				</div>   
+			</div>
+        </div>
+      </div><!-- /row -->
+     
+ 
+	  <!-- THIRD ROW OF BLOCKS -->     
+      <div class="row">
+      	<div class="col-sm-3 col-lg-3">
+
+	  <div class="dash-unit">
+      		<dtitle>Videos</dtitle>
+      		<hr>
+      		<div class="framemail">
+    			<div class="window">
+			        <ul class="mail">
+			            <li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/v1.jpg" alt="avatar">
+			                <p class="sender">Sahara Rally Tour 2014</p>
+			                <div class="actions">
+			                    <a href="https://www.youtube.com/watch?v=AwK0JqfdRms" target="_blank"><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						  <li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/v2.jpg" alt="avatar">
+			                <p class="sender">MAROCO SAHARA RALLY 2015</p>
+			                <div class="actions">
+			                    <a href="https://www.youtube.com/watch?v=By1da-qnzRY" target="_blank"><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						 <li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/v3.jpg" alt="avatar">
+			                <p class="sender"> sahara rally 2012</p>
+			                <div class="actions">
+			                    <a href="https://www.youtube.com/watch?v=yWCbRVBMXKc" target="_blank"><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						
+			           
+			        </ul>
+    			</div>
+			</div>
+		</div><!-- /dash-unit -->
+		
+		
+		
+      	
+      	</div>
+
+      	<div class="col-sm-3 col-lg-3">
+
+
+	  <!-- PAGE VIEWS BLOCK -->     
+      		<div class="half-unit">
+	      		<dtitle>Visualizações de Pagina</dtitle>
+	      		<hr>
+	      		<div class="cont">
+      			<p><bold>145.0K</bold></p>
+	      		</div>
+      		</div>
+      	</div>
+		  
+		  <a href="http://www.accuweather.com/en/sy/afrin/313419/weather-forecast/313419" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+-->
+
+      	<div class="col-sm-3 col-lg-3">
+			  
+			  
+			  
+
+	  <!-- FOLLOWERS BLOCK -->     
+      		<div class="half-unit">
+	      		<dtitle>Seguidores</dtitle>
+	      		<hr>
+	      		<div class="cont">
+      			<p><bold>17.833 Seguidores</bold></p>
+	      		</div>
+      		</div>
+      	</div>
+		  
+		  <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+	      		<dtitle>Noticias</dtitle>
+	      		<hr>
+				<div class="info-user">
+					<span aria-hidden="true" class="li_news fs2"></span>
+				</div>
+				<br>
+      			<div class="text">
+</a><div id="awcc1448213476076" class="aw-widget-current"  data-locationkey="313419" data-unit="f" data-language="en-us" data-useip="true" data-uid="awcc1448213476076"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+      				
+      			</div>
+      		</div>
+      	</div>
+
+	  <!-- LATEST NEWS BLOCK -->     
+      	<div class="col-sm-3 col-lg-3">
+			  <div class="dash-unit">
+      		<dtitle>Fotos</dtitle>
+      		<hr>
+      		<div class="framemail">
+    			<div class="window">
+			        <ul class="mail">
+			            <li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/f1.jpg" alt="avatar">
+			                <p class="sender">Líder nas Motos </p>
+			                <div class="actions">
+			                    <a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						<li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/f2.jpg" alt="avatar">
+			                <p class="sender">Descargar de areia </p>
+			                <div class="actions">
+			                    <a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						<li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/f3.jpg" alt="avatar">
+			                <p class="sender">Rally 2015</p>
+			                <div class="actions">
+			                    <a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+						<li>
+			                <i class="read"></i>
+			                <img class="avatar" src="imgs/f4.jpg" alt="avatar">
+			                <p class="sender">The Rally – World's Toughest </p>
+			                <div class="actions">
+			                    <a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
+			                </div>
+			            </li>
+						
+			           
+			        </ul>
+    			</div>
+			</div>
+		</div><!-- /dash-unit -->
+      		<div class="dash-unit">
+	      		<dtitle>Noticias</dtitle>
+	      		<hr>
+				<div class="info-user">
+					<span aria-hidden="true" class="li_news fs2"></span>
+				</div>
+				<br>
+      			<div class="text">
+      				<p><b>Vitor Amaral:</b> Consegue ultrapassar o concorrente da Yamaha</p>
+      				<p><grey>Ultima Atualização: 15 minutes ago.</grey></p>
+      			</div>
+      		</div>
+			  
+			  <div class="dash-unit">
+      		<dtitle>Mapa</dtitle>
+      		<hr>
+      		<div class="framemail">
+    			<div class="window">
+			      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15097952.994205872!2d15.2814527!3d22.5032947!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13883b64fb267151%3A0xd6406bdc582d7390!2sSahara+Desert!5e0!3m2!1spt-PT!2spt!4v1448214325744" width="250" height="250" frameborder="0" style="border:0;position: relative;left: 24px;top: -16px;" allowfullscreen=""></iframe>
+				  
+				  
+    			</div>
+			</div>
+		</div><!-- /dash-unit -->
+      	</div>
+		  
+      </div><!-- /row -->
+      
+	</div> <!-- /container -->
+	<div id="footerwrap">
+      	<footer class="clearfix"></footer>
+      	<div class="container">
+      		<div class="row">
+      			<div class="col-sm-12 col-lg-12">
+      			<p>Sibaq Rally - Copyright 2015</p>
+      			</div>
+      		</div><!-- /row -->
+      	</div><!-- /container -->		
+	</div><!-- /footerwrap -->
+          
+</body></html>
